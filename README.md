@@ -7,3 +7,7 @@ ObjectiFai is free open source software that allows you track your objectives an
 ## Status
 
 ObjectiFai is currently in development. The first release is expected to be in the early 2025. but you can still contribute to the project by submitting issues and pull requests.
+
+## Contributing
+
+see [CONTRIBUTING.md](CONTRIBUTING.md) for more information.
