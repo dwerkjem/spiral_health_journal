@@ -10,4 +10,4 @@ ObjectiFai is currently in development. The first release is expected to be in t
 
 ## Contributing
 
-see [CONTRIBUTING.md](CONTRIBUTING.md) for more information.
+see [CONTRIBUTING.md](documentation/CONTRIBUTING.md) for more information.
