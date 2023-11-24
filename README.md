@@ -1,4 +1,4 @@
-# spiral
+# Spiral
 
 ## Introduction
 
