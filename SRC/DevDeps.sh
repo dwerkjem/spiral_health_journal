@@ -9,6 +9,11 @@ install_dependency() {
     sudo apt-get install "$1"
 }
 
+# Function to check if a dependency is installed
+check_dependency() {
+    dpkg -s "$1" >/dev/null 2>&1
+}
+
 # Parse command-line arguments
 automatic_install=false
 while getopts ":y" opt; do
@@ -24,14 +29,19 @@ while getopts ":y" opt; do
 done
 
 # Install dependencies
-for dep in "${dependencies[@]}"; do
-    if [ "$automatic_install" = true ] ; then
-        install_dependency "$dep"
+for dependency in "${dependencies[@]}"
+do
+    if check_dependency "$dependency"; then
+        echo "$dependency is already installed."
     else
-        read -rp "Do you want to install $dep? [Y/n] " answer
-        case $answer in
-            [Yy]* ) install_dependency "$dep";;
-            * ) echo "Skipping $dep";;
-        esac
+        if $automatic_install; then
+            install_dependency "$dependency"
+        else
+            echo "Would you like to install $dependency? (y/n)"
+            read -r answer
+            if [ "$answer" != "${answer#[Yy]}" ] ;then
+                install_dependency "$dependency"
+            fi
+        fi
     fi
 done
