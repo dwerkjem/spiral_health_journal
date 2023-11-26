@@ -3,10 +3,19 @@
 # Define dependencies
 dependencies=("libboost-all-dev")
 
+# Define git dependencies
+git_dependencies=("https://github.com/ocornut/imgui.git")
+
 # Function to install a single dependency
 install_dependency() {
     echo "Installing $1..."
     sudo apt-get install "$1"
+}
+
+# Function to install a git dependency
+install_git_dependency() {
+    echo "Installing $1..."
+    git clone --recursive "$1"
 }
 
 # Function to check if a dependency is installed
@@ -45,3 +54,24 @@ do
         fi
     fi
 done
+
+# Install git dependencies
+for dependency in "${git_dependencies[@]}"
+do
+    if [ -d "$dependency" ]; then
+        echo "$dependency is already installed."
+    else
+        if $automatic_install; then
+            install_git_dependency "$dependency"
+        else
+            echo "Would you like to install $dependency? (y/n)"
+            read -r answer
+            if [ "$answer" != "${answer#[Yy]}" ] ;then
+                install_git_dependency "$dependency"
+            fi
+        fi
+    fi
+done
+echo ""
+
+echo "Developer dependencies installed. You may now run 'make' to build the project."
