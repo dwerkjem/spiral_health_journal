@@ -19,3 +19,11 @@ spiral is licensed with a custom license. see [LICENSE.md](documentation/LICENSE
 ## Disclaimer
 
 see [DISCLAIMER.md](documentation/DISCLAIMER.md) for more information on the disclaimer.
+
+## running spiralHTJ (Health Tracking Journal)
+
+spiralHTJ dose not have a GUI yet. to run it, you must agree to the terms of the disclaimer and license. to do this, append `I agree` to the DISCLAMER.md, LICENSE.md, and README.md files. then run the following command:
+
+```bash
+./run.sh
+```

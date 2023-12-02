@@ -1,7 +1,7 @@
 # Purpose: entry point for spiral HTJ 'health tracking journal'
 # see README.md for more details
 # Author: @dwerkjem (Derek R Neilson)'
-# License: OPENish v1.0 (see LICENSE.md for more details)
+# License: (see documentation/LICENSE.md for more details)
 # Version: 0.1.0
 # DO NOT EDIT ANYTHING ABOVE THIS LINE
 import argparse

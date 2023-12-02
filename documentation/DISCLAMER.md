@@ -15,3 +15,11 @@
 6. **Assumption of Risk:** By using the Software, you acknowledge and agree that there are risks associated with health and fitness decisions, and you assume full responsibility for those risks.
 
 Your use of the Software indicates your understanding and acceptance of the terms of this disclaimer. If you do not agree with this disclaimer, please do not use the Software.
+
+please type "I agree" where indicated to indicate that you have read and agree to all of the following files:
+
+- [DISCLAMER.md](documentation/DISCLAMER.md)
+- [LICENSE.md](documentation/LICENSE.md)
+- [README.md](README.md)
+
+write I agree after the colon if you agree to the terms of the disclaimer and license:
