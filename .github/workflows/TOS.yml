@@ -31,7 +31,7 @@ jobs:
         done
     - name: Compare License with Secret
       env:
-        SECRET_LICENSE: ${{ secrets.LICENSE }}
+        SECRET_LICENSE: ${{ secrets.license }}
       run: |
           #!/bin/bash
 
