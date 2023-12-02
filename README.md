@@ -11,3 +11,11 @@ spiral is currently in development. The first release is expected to be in the e
 ## Contributing
 
 see [CONTRIBUTING.md](documentation/CONTRIBUTING.md) for more information.
+
+## License
+
+spiral is licensed with a custom license. see [LICENSE.md](documentation/LICENSE.md) for more information.
+
+## Disclaimer
+
+see [DISCLAIMER.md](documentation/DISCLAIMER.md) for more information on the disclaimer.
