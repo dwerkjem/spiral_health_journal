@@ -1,0 +1,44 @@
+name: Check Agreement Lines
+
+on: [push, pull_request]
+
+jobs:
+  check-files:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Check and Remove 'I Agree'
+      run: |
+        #!/bin/bash
+
+        FILES_TO_CHECK=("documentation/LICENSE.md" "README.md" "documentation/DISCLAMER.md")
+        for file in "${FILES_TO_CHECK[@]}"; do
+          # Check if the file ends with 'I agree'
+          if tail -n 1 "$file" | grep -Eq "I agree$"; then
+            echo "'I agree' found in $file, removing..."
+            # Remove the last line and commit the change
+            head -n -1 "$file" > temp.txt && mv temp.txt "$file"
+            git config --global user.name 'github-actions[bot]'
+            git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -am "Auto-removed 'I agree' from $file"
+            git push
+          else
+            echo "'I agree' not found in $file"
+          fi
+        done
+    - name: Compare License with Secret
+      env:
+        SECRET_LICENSE: ${{ secrets.LICENSE }}
+      run: |
+          #!/bin/bash
+
+          echo "$SECRET_LICENSE" > secret_license.txt
+          if ! diff -q documentation/LICENSE.md secret_license.txt > /dev/null; then
+            echo "Differences found between secret 'LICENSE' and 'documentation/LICENSE.md'"
+            exit 1
+          else
+            echo "No differences found. Proceeding..."
+          fi
