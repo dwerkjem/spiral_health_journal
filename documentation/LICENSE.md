@@ -28,4 +28,4 @@
 
 7. **Termination:** This License and the rights granted hereunder will terminate automatically upon any breach by you of the terms of this License.
 
-write I agree after the colon if you agree to the terms of the disclaimer and license agreement:
+write I agree after the colon if you agree to the terms of the disclaimer and license agreement:I agree
