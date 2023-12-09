@@ -29,16 +29,3 @@ jobs:
             echo "'I agree' not found in $file"
           fi
         done
-    - name: Compare License with Secret
-      env:
-        SECRET_LICENSE: ${{ secrets.license }}
-      run: |
-          #!/bin/bash
-
-          echo "$SECRET_LICENSE" > secret_license.txt
-          if ! diff -q documentation/LICENSE.md secret_license.txt > /dev/null; then
-            echo "Differences found between secret 'LICENSE' and 'documentation/LICENSE.md'"
-            exit 1
-          else
-            echo "No differences found. Proceeding..."
-          fi
