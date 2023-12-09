@@ -6,10 +6,12 @@ jobs:
   check-files:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
-
     - name: Check and Remove 'I Agree'
       run: |
         #!/bin/bash
