@@ -61,6 +61,7 @@ def start():
     log.debug('starting spiral HTJ')
     if parse_args():
         log.debug('args parsed successfully')
+        
     else:
         log.error('failed to parse args')
         sys.exit(1)
