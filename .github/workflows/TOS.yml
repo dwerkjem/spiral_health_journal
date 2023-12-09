@@ -16,18 +16,17 @@ jobs:
       run: |
         #!/bin/bash
 
-        FILES_TO_CHECK=("documentation/LICENSE.md" "README.md" "documentation/DISCLAMER.md")
         for file in "${FILES_TO_CHECK[@]}"; do
-          # Check if the file ends with 'I agree'
-          if tail -n 1 "$file" | grep -Eq "I agree$"; then
-            echo "'I agree' found in $file, removing..."
-            # Remove the last line and commit the change
-            head -n -1 "$file" > temp.txt && mv temp.txt "$file"
-            git config --global user.name 'github-actions[bot]'
-            git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git commit -am "Auto-removed 'I agree' from $file"
-            git push
-          else
-            echo "'I agree' not found in $file"
-          fi
+        # Check if the file ends with 'I agree'
+        if tail -n 1 "$file" | grep -Eq "I agree$"; then
+          echo "'I agree' found in $file, removing..."
+          # Remove only 'I agree' from the last line
+          sed -i '$ s/I agree$//' "$file"
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -am "Auto-removed 'I agree' from $file"
+          git push
+        else
+          echo "'I agree' not found in $file"
+        fi
         done
