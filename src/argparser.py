@@ -7,12 +7,14 @@
 import argparse
 import sys
 import logging
+import os
+import modules.user as user
 
 parser = argparse.ArgumentParser(description="entry point for spiral HTJ 'health tracking journal'")
-
 parser.add_argument('-v', '--version', action='version', version=' 0.1.0')
 parser.add_argument('-d', '--debug', action='store_true', help='enable debug mode')
 parser.add_argument('-V', '--verbosity', type=int, default=1, help='increase output verbosity (max 3, min 0)')
+parser.add_argument('-u', '--user', type=str, help='user arguments see `help user` for more details')
 
 red = '\033[91m' # error
 yellow = '\033[93m' # warning
@@ -20,8 +22,8 @@ green = '\033[92m' # info
 blue = '\033[94m' # debug
 white = '\033[0m' # rest of text
 colors = [red, yellow, green, blue, white]
-# add logging default to error and format to timestamp:  levelname: message ! for errors and warnings only
-logging.basicConfig(level=logging.ERROR, format='%(asctime)s %(levelname)s %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+# add logging default to error and format to timestamp: filename  levelname: message ! for errors and warnings only
+logging.basicConfig(level=logging.ERROR, format='%(asctime)s %(filename)s %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
 log = logging.getLogger(__name__) # get logger for this file
 # add color to logging levels
 logging.addLevelName(logging.ERROR, red + logging.getLevelName(logging.ERROR) + white)
@@ -61,7 +63,7 @@ def start():
     log.debug('starting spiral HTJ')
     if parse_args():
         log.debug('args parsed successfully')
-        
+
     else:
         log.error('failed to parse args')
         sys.exit(1)
@@ -71,4 +73,11 @@ def start():
 if __name__ == '__main__':
     if start():
         log.info('spiral HTJ exited successfully and gracefully')
+        log.debug("starting user module")
+        user.SignIn(
+            logger=log,
+            debug=parser.parse_args().debug,
+            arguments=parser.parse_args().user
+        )
+        log.debug("user module exited")
     sys.exit(0)
