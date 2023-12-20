@@ -22,4 +22,4 @@ please type "I agree" where indicated to indicate that you have read and agree t
 - [LICENSE.md](documentation/LICENSE.md)
 - [README.md](README.md)
 
-write I agree after the colon if you agree to the terms of the disclaimer and license agreement:
+write I agree after the colon if you agree to the terms of the disclaimer and license agreement: I agree
