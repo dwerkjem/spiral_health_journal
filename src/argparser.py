@@ -14,8 +14,11 @@ parser = argparse.ArgumentParser(description="entry point for spiral HTJ 'health
 parser.add_argument('-v', '--version', action='version', version=' 0.1.0')
 parser.add_argument('-d', '--debug', action='store_true', help='enable debug mode')
 parser.add_argument('-V', '--verbosity', type=int, default=1, help='increase output verbosity (max 3, min 0)')
-parser.add_argument('-u', '--user', type=str, help='user arguments see `help user` for more details')
+parser.add_argument('-u', '--user', type=str, help='user arguments see `-h user` for more details')
 
+
+
+# add color to logging levels
 red = '\033[91m' # error
 yellow = '\033[93m' # warning
 green = '\033[92m' # info
