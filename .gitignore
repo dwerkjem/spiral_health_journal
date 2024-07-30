@@ -1,5 +1,6 @@
 .vscode
-.venv-SpiralHTJ
+
+# android/ build output
 *.pyc
 *.iml
 .gradle
@@ -16,3 +17,12 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+node_modules
+dist
+cypress/screenshots
+cypress/videos
+.DS_Store
+.vscode
+.idea
+*.log
