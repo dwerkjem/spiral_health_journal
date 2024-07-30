@@ -26,7 +26,7 @@ jobs:
         build-tools-version: 30.0.3
 
     - name: Grant execute permission for gradlew
-      run: chmod +x src/android/app/gradlew
+      run: chmod +x src/android/gradlew
 
     - name: Cache Gradle packages
       uses: actions/cache@v2
@@ -36,7 +36,7 @@ jobs:
         restore-keys: ${{ runner.os }}-gradle
 
     - name: Build with Gradle
-      run: src/android/app/./gradlew build
+      run: src/android/./gradlew build
 
     - name: Run tests
-      run: src/android/app/./gradlew test
+      run: src/android/./gradlew test
