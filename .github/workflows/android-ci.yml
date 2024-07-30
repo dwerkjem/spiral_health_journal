@@ -36,7 +36,9 @@ jobs:
         restore-keys: ${{ runner.os }}-gradle
 
     - name: Build with Gradle
-      run: src/android/./gradlew build
+      run: ./gradlew build
+      working-directory: src/android
 
     - name: Run tests
-      run: src/android/./gradlew test
+      run: ./gradlew test
+      working-directory: src/android
