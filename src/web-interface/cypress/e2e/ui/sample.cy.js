@@ -1,3 +1,5 @@
+/* eslint-disable no-constant-condition */
+/* eslint-disable no-undef */
 
 describe('Sample test', () => {
     it('should pass', () => {
