@@ -9,3 +9,4 @@ spiral is free open-source software that allows you to track your objectives, go
 - An Android app that allows you to track your objectives, goals, emotions, and habits
 - A web app that allows you to analyze your data and see your progress over time
 - A REST API that allows you to access your data from other applications
+
